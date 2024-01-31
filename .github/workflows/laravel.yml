@@ -1,0 +1,19 @@
+name: Deploy to Namecheap Shared Hosting via FTP on push to v2 branch
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    linting:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@v2
+            -   name: Install Pint
+                run: composer require laravel/pint --dev
+            -   name: Run Linting
+                run: ./vendor/bin/pint

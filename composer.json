@@ -1,0 +1,67 @@
+{
+    "name": "flexiwind/flexiwind",
+    "description": "a Laravel and livewire package",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "livewire",
+        "blade",
+        "ui",
+        "components",
+        "livewire-packages",
+        "livewire-components",
+        "alpinejs"
+    ],
+    "authors": [
+        {
+            "role": "Developer",
+            "name": "Tresor-Kasenda",
+            "email": "scotttresor@gmail.com",
+            "homepage": "https://tresorkasenda.tech"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^10.42"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.13",
+        "orchestra/testbench": "^8.21",
+        "pestphp/pest": "^2.33",
+        "larastan/larastan": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flexiwind\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Flexiwind\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Flexiwind\\FlexiwindServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "analyze": [
+            "./vendor/bin/pint",
+            "./vendor/bin/phpstan analyse",
+            "./vendor/bin/pest"
+        ]
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "prefer-stable": true
+}
