@@ -1,5 +1,6 @@
 @php
     $variantStyles = $getVariantStyles();
+    $icons = $getIcon();
 @endphp
 
 @props([
@@ -9,12 +10,19 @@
 ])
 
 <div data-alert {{ $attributes->merge(['class' => $variantStyles['border'] . ' ' . $background]) }}>
-    @if($label)
-        <h3 {{ $attributes->merge(['class' => 'font-medium ' . $variantStyles['text']]) }}>
-            {{ $label }}
-        </h3>
+    @if($icons)
+        <div class="w-max p-2 rounded-full {{ $variantStyles['border'] }}">
+            {{ $icons }}
+        </div>
     @endif
-    <p {{ $attributes->merge(['class' => $variantStyles['text']]) }}>
-        {{ $message ?? $slot }}
-    </p>
+    <div class="flex-1">
+        @if($label)
+            <h3 {{ $attributes->merge(['class' => 'font-medium ' . $variantStyles['text']]) }}>
+                {{ $label }}
+            </h3>
+        @endif
+        <p {{ $attributes->merge(['class' => $variantStyles['text']]) }}>
+            {{ $message ?? $slot }}
+        </p>
+    </div>
 </div>

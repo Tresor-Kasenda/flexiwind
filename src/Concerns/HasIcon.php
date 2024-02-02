@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Flexiwind\Concerns;
 
-use Closure;
-
 trait HasIcon
 {
-    public function getIcon(): Closure|string
+    public function getIcon(): string
     {
-        return $this->icon ?? "";
+        return $this->icons;
     }
 }
