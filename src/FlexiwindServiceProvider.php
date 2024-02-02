@@ -6,6 +6,8 @@ namespace Flexiwind;
 
 use Flexiwind\Console\Commands\FlexiwindCommand;
 use Flexiwind\View\Components\Accordion\Accordion;
+use Flexiwind\View\Components\Alerts\Alert;
+use Flexiwind\View\Components\Alerts\AlertDialog;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -37,6 +39,9 @@ class FlexiwindServiceProvider extends ServiceProvider
 
         Blade::component($prefix.'-accordion.group', Accordion::class);
         Blade::component('flexiwind::components.accordion.item', $prefix.'-accordion.item');
+
+        Blade::component($prefix.'-alert', Alert::class);
+        Blade::component($prefix.'-alert-dialog', AlertDialog::class);
     }
 
     public function register(): void
