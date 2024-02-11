@@ -1,4 +1,4 @@
-name: Deploy to Namecheap Shared Hosting via FTP on push to v2 branch
+name: Deploy to
 on:
     push:
         branches:
