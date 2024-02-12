@@ -9,12 +9,11 @@ trait HasSize
     public function getSize(): string
     {
         return [
-            'xs' => 'size-6',
-            'sm' => 'size-10',
-            'md' => 'size-16',
-            'lg' => 'size-20',
-            'xl' => 'size-24',
-            'full' => 'size-full'
-        ][$this->size] ?? 'size-6';
+            'sm' => 'w-8 h-8',
+            'md' => 'w-10 h-10',
+            'lg' => 'w-12 h-12',
+            'xl' => 'w-14 h-14',
+            'full' => 'w-full h-full',
+        ][$this->size] ?? 'w-8 h-8';
     }
 }

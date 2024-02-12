@@ -21,8 +21,8 @@ class FlexiwindServiceProvider extends ServiceProvider
             $this->commands([FlexiwindCommand::class]);
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'flexiwind');
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'flexiwind');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'flexiwind');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'flexiwind');
 
         $this->registerBladeComponents();
     }
@@ -30,11 +30,11 @@ class FlexiwindServiceProvider extends ServiceProvider
     protected function bootConsole(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/flexiwind.php' => config_path('flexiwind.php'),
+            __DIR__.'/../config/flexiwind.php' => config_path('flexiwind.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__ . '/../resources/views/svg' => public_path('vendor/flexiwind-icons'),
+            __DIR__.'/../resources/views/svg' => public_path('vendor/flexiwind-icons'),
         ], 'flexiwind-icons');
     }
 
@@ -42,16 +42,16 @@ class FlexiwindServiceProvider extends ServiceProvider
     {
         $prefix = config('flexiwind.prefix');
 
-        Blade::component($prefix . '-accordion.group', Accordion::class);
-        Blade::component('flexiwind::components.accordion.item', $prefix . '-accordion.item');
+        Blade::component($prefix.'-accordion.group', Accordion::class);
+        Blade::component('flexiwind::components.accordion.item', $prefix.'-accordion.item');
 
-        Blade::component($prefix . 'alert', Alert::class);
-        Blade::component($prefix . 'alert-dialog', AlertDialog::class);
-        Blade::component($prefix . 'avatar', Avatar::class);
+        Blade::component($prefix.'alert', Alert::class);
+        Blade::component($prefix.'alert-dialog', AlertDialog::class);
+        Blade::component($prefix.'avatar', Avatar::class);
     }
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/flexiwind.php', 'flexiwind');
+        $this->mergeConfigFrom(__DIR__.'/../config/flexiwind.php', 'flexiwind');
     }
 }

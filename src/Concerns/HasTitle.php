@@ -8,6 +8,6 @@ trait HasTitle
 {
     public function getTitle(): string
     {
-        return $this->title ?? str()->title()->limit('10');
+        return $this->title ?? '';
     }
 }

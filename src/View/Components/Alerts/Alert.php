@@ -18,44 +18,34 @@ class Alert extends Component
     public string $view = 'flexiwind::components.alerts.alert';
 
     public function __construct(
-        public string $background = '',
-        public string $icons = '',
-        public string $label = '',
-        public string $message = '',
-        public string $type = 'primary',
-        public string $fontSize = 'xs',
+        public ?string $background = null,
+        public ?string $icons = null,
+        public ?string $label = null,
+        public ?string $message = null,
+        public ?string $type = null,
+        public ?string $fontSize = null,
     ) {
     }
 
+    /**
+     * @return array<string, array<int, string>>
+     */
     public function getVariantStyles(): array
     {
         $sizeStyles = $this->getFontSizeStyles();
+        $styles = [
+            'info' => 'gray-400 text-gray-600',
+            'success' => 'green-400 text-green-600',
+            'warning' => 'orange-400 text-orange-600',
+            'danger' => 'red-400 text-red-600',
+            'primary' => 'blue-400 text-blue-600',
+            'dark' => 'gray-800 text-dark',
+        ];
 
+        $type = $styles[$this->type] ?? 'blue-400 text-blue-600';
         return [
-            'info' => [
-                'border' => 'border border-gray-400 rounded-md p-2',
-                'text' => 'text-gray-600'.' '.$sizeStyles,
-            ],
-            'success' => [
-                'border' => 'border border-green-400 rounded-md p-2',
-                'text' => 'text-green-600'.' '.$sizeStyles,
-            ],
-            'warning' => [
-                'border' => 'border border-orange-400 rounded-md p-2',
-                'text' => 'text-orange-600'.' '.$sizeStyles,
-            ],
-            'danger' => [
-                'border' => 'border border-red-400 rounded-md p-2',
-                'text' => 'text-red-600'.' '.$sizeStyles,
-            ],
-            'primary' => [
-                'border' => 'border border-blue-400 rounded-md p-2',
-                'text' => 'text-blue-600'.' '.$sizeStyles,
-            ],
-            'dark' => [
-                'border' => 'border border-gray-800 rounded-md p-2',
-                'text' => 'text-dark'.' '.$sizeStyles,
-            ]
-        ][$this->type] ?? ['border' => 'border border-blue-400 rounded-md p-2', 'text' => 'text-blue-600'.' '.$sizeStyles];
+            'border' => ["border border-{$type} rounded-md p-2"],
+            'text' => ["text-{$type} {$sizeStyles}"],
+        ];
     }
 }

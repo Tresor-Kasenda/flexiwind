@@ -14,22 +14,21 @@ use Illuminate\View\Component;
 
 class Avatar extends Component
 {
+    use HasBorderRadius;
     use HasExtractMethod;
+    use HasImage;
     use HasRender;
     use HasSize;
     use HasTitle;
-    use HasImage;
-    use HasBorderRadius;
 
     public string $view = "flexiwind::components.avatars.avatar";
 
     public function __construct(
-        public ?string $image = '',
+        public ?string $image = null,
         public ?string $title = null,
-        public ?string $size = '',
-        public ?string $radius = '',
-        public ?string $intend = 'info'
-    )
-    {
+        public ?string $size = null,
+        public ?string $radius = null,
+        public ?string $intend = null
+    ) {
     }
 }

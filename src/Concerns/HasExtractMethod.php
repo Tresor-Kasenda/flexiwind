@@ -10,13 +10,19 @@ use ReflectionMethod;
 
 trait HasExtractMethod
 {
+    /**
+     * @return array<string, Closure>
+     */
     public function extractPublicMethods(): array
     {
         $methods = new ReflectionClass($this);
-        $publicMethods  = [];
+        $publicMethods = [];
 
         foreach ($methods->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-            $publicMethods[$method->getName()] = Closure::fromCallable([$this, $method->getName()]);
+            $methodName = $method->getName();
+            if (method_exists($this, $methodName)) {
+                $publicMethods[$methodName] = $this->$methodName(...);
+            }
         }
 
         return $publicMethods;
